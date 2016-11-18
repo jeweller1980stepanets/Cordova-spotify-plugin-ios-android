@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova.plugin.spotify" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SpotifyPlugin</name>
+    <js-module name="SpotifyPlugin" src="www/SpotifyPlugin.js">
+        <clobbers target="cordova.plugins.SpotifyPlugin" />
+    </js-module>
+    
+    <preference name="URL_SCHEME" />
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+        <feature name="SpotifyPlugin"><param name="android-package" value="cordova.plugin.spotify.SpotifyPlugin" />
+        </feature>
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="$URL_SCHEME"/>
+        </intent-filter>
+    </config-file>
+    <config-file parent="/*" target="AndroidManifest.xml" />
+        <source-file src="libs/spotify-auth-beta23-noconnect-2.20b.aar" target-dir="libs/" />
+        <source-file src="libs/spotify-player-beta23-noconnect-2.20b.aar" target-dir="libs/" />
+        <source-file src="src/android/SpotifyPlugin.java" target-dir="src/cordova/plugin/spotify/" />
+        <source-file src="src/android/SpotifyPluginController.java" target-dir="src/cordova/plugin/spotify/" />
+        <framework custom="true" src="src/android/spotify.gradle" type="gradleReference" />
+    </platform>
+    
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="SpotifyPlugin"><param name="ios-package" value="SpotifyPlugin" />
+            </feature>
+        </config-file>
+        
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>CFBundleTypeRole</key>
+                    <string>Editor</string>
+                    <key>CFBundleURLName</key>
+                    <string>Spotify Auth</string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>$URL_SCHEME</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>
+        
+        <header-file src="src/ios/SpotifyPlugin.h" />
+        <source-file src="src/ios/SpotifyPlugin.m" />
+        
+        <framework src="src/ios/SpotifyAudioPlayback.framework" custom="true" />
+        <framework src="src/ios/SpotifyAuthentication.framework" custom="true" />
+        <framework src="src/ios/SpotifyMetadata.framework" custom="true" />
+        <framework src="AVFoundation.framework" />
+        
+    </platform>
+</plugin>

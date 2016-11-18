@@ -1,0 +1,12 @@
+repositories{
+  jcenter()
+  flatDir{
+      dirs 'libs/'
+   }
+}
+
+dependencies {
+   compile 'com.spotify.sdk:spotify-auth-beta23-noconnect-2.20b@aar'
+    compile 'com.spotify.sdk:spotify-player-beta23-noconnect-2.20b@aar'
+}
+
