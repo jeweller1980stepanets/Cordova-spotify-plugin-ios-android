@@ -49,7 +49,7 @@ Player.NotificationCallback, ConnectionStateCallback{
     private static final String ACTION_LOG_OUT = "logout";
     private static final String ACTION_SEEK = "seek";
     private static final String ACTION_VOLUME = "setVolume";
-    private static final String METHOD_SEND_TO_JS_OBJ = "window.cordova.plugins.SpotifyPlugin.Events.";
+    private static final String METHOD_SEND_TO_JS_OBJ = "window.cordova.plugins.SpotifyPlugin.events.";
     private static final String ACTION_GET_POSITON = "getPosition";
     
     private static final int REQUEST_CODE = 1337;
