@@ -168,7 +168,7 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }];
     }];
-    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.Events.onAudioFlush(["];
+    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.events.onAudioFlush(["];
     [str appendFormat:@"%f])",offset];
     
     [self.commandDelegate evalJs:str];
@@ -208,17 +208,17 @@
     
     if (isPlaying) {
         
-        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onPlay(['Player play'])"];
+        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.events.onPlay(['Player play'])"];
         
     } else {
-        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onPause(['Player paused'])"];
+        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.events.onPause(['Player paused'])"];
     }
 }
 
 
 -(void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeMetadata:(SPTPlaybackMetadata *)metadata {
-    [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onTrackChanged(['Track changed'])"];
-    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.Events.onMetadataChanged(["];
+    [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.events.onTrackChanged(['Track changed'])"];
+    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.events.onMetadataChanged(["];
     [str appendFormat:@"'%@',",metadata.currentTrack.name ];
     [str appendFormat:@"'%@',",metadata.currentTrack.artistName ];
     [str appendFormat:@"'%@',",metadata.currentTrack.albumName ];
@@ -237,23 +237,23 @@
 }
 -(void)audioStreamingDidSkipToNextTrack:(SPTAudioStreamingController *)audioStreaming
 {
-    [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onNext(['Next trak'])"];
+    [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.events.onNext(['Next trak'])"];
 }
 -(void)audioStreamingDidSkipToPreviousTrack:(SPTAudioStreamingController *)audioStreaming
 {
-    [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onPrev(['Previos trak'])"];
+    [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.events.onPrev(['Previos trak'])"];
 }
 -(void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata
 {
     if(trackMetadata != nil){
-        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onTrackChanged(['Track changed'])"];
+        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.events.onTrackChanged(['Track changed'])"];
     }
 }
 -(void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didSeekToOffset:(NSTimeInterval)offset
 {
 }
 - (void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangePosition:(NSTimeInterval)position {
-    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.Events.onPosition("];
+    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.events.onPosition("];
     [str appendFormat:@"%f)",position*1000];
     
     [self.commandDelegate evalJs:str];
@@ -261,7 +261,7 @@
 }
 -(void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeVolume:(SPTVolume)volume
 {
-    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.Events.onVolumeChanged("];
+    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.events.onVolumeChanged("];
     [str appendFormat:@"%f)",volume];
     
     [self.commandDelegate evalJs:str];
