@@ -24,6 +24,10 @@ cordova plugin rm cordova.plugin.spotify
 :warning: for Android platform not implemented method `setVolume()` and `event onVolumeChanged()`
 It will be fixed when this methods will be in Spotify SDK
 
+**for iOS**
+You must download *spotify_token_swap.rb*. You may download it [here] [PlGh].
+To run the service, enter your client ID, client secret and client callback URL and run the project.
+
 # Using the plugin
 > **You must have premium account from Deezer servise for playing music** :exclamation:
 
@@ -126,6 +130,7 @@ Spotify.Events.onVolumeChanged = function(args){};
     
 ### Authors
  - Aleksey Stepanets
-[PlDb]:<http://developers.deezer.com/sdk/ios>
+[PlDb]:<https://developer.spotify.com>
+[PlGh]:<https://github.com/spotify/ios-sdk/blob/master/Demo%20Projects/spotify_token_swap.rb>
 
 [![N|Solid](http://procoders.tech/art/powered.png)](http://procoders.tech/)
