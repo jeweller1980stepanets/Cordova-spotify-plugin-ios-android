@@ -94,7 +94,7 @@ spotifyCordova.events.onPlayerPlay = function(arg){};
 > *arg* - name of event (string)
 
 ```javascript
-Spotify.events.onPrev = function(args){};
+spotifyCordova.events.onPrev = function(args){};
 ```
 > *args[0]*  - action name;
 
