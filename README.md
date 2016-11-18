@@ -25,7 +25,7 @@ cordova plugin rm cordova.plugin.spotify
 It will be fixed when this methods will be in Spotify SDK
 
 
-:warning:***for iOS***You must download *spotify_token_swap.rb*. You may download it [here] [PlGh].
+:warning:***for iOS*** you must download *spotify_token_swap.rb*. You may download it [here] [PlGh].
 To run the service, enter your client ID, client secret and client callback URL and run the project.
 
 # Using the plugin
