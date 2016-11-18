@@ -76,7 +76,7 @@ spotifyCordova.setVolume(val1,val2);
 
 ## Events
 ```javascript
-spotifyCordova.Events.onMetadataChanged = function(args){};
+spotifyCordova.events.onMetadataChanged = function(args){};
 ```
 >Called when metadata for current changed.
  This event occurs when playback starts or changes to a different context,
@@ -89,44 +89,44 @@ spotifyCordova.Events.onMetadataChanged = function(args){};
 > *args[3]* - track duration.
 
 ```javascript
-spotifyCordova.Events.onPlayerPlay = function(arg){};
+spotifyCordova.events.onPlayerPlay = function(arg){};
 ```
 > *arg* - name of event (string)
 
 ```javascript
-Spotify.Events.onPrev = function(args){};
+Spotify.events.onPrev = function(args){};
 ```
 > *args[0]*  - action name;
 
 ```javascript
-spotifyCordova.Events.onNext = function(args){};
+spotifyCordova.events.onNext = function(args){};
 ```
 > *args[0]*  - action name;        
      
 ```javascript
-spotifyCordova.Events.onPause = function(args){};
+spotifyCordova.events.onPause = function(args){};
 ```
 > *args[0]*  - action name;    
       
 ```javascript
-spotifyCordova.Events.onAudioFlush = function(args){};
+spotifyCordova.events.onAudioFlush = function(args){};
 ```
 > onAudioFlush playback to a given location in the current track.
 > As a fact, return current position progress of a track.
 > *args[0]*  - position (ms); 
    
 ```javascript
-spotifyCordova.Events.onTrackChanged = function(args){};
+spotifyCordova.events.onTrackChanged = function(args){};
 ```
 > *args[0]*  - action name;      
   
 ```javascript
-spotifyCordova.Events.onPosition = function(args){};
+spotifyCordova.events.onPosition = function(args){};
 ```
 > *args[0]*  - position (ms);      
       
 ```javascript
-spotifyCordova.Events.onVolumeChanged = function(args){};
+spotifyCordova.events.onVolumeChanged = function(args){};
 ```
 > *args[0]*  - volume betwen 0.0 ....1.0
     
