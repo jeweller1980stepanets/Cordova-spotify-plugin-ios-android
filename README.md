@@ -6,11 +6,11 @@ This plugin included all main functions of audio player for Spotify servise :smi
 ## Installation
 > To communicate with Spotify you need to register your application’s bundle id section in the [Developer Portal][PlDb]. This value is used to authenticate your application against Spotify client.
 
-
+![Image alt](https://github.com/jeweller1980stepanets/image/blob/master/1.png)
 
 You may install latest version from master
 ```sh
-cordova plugin add https://github.com/jeweller1980stepanets/Cordova-spotify-plugin-ios-android
+cordova plugin add https://github.com/jeweller1980stepanets/Cordova-spotify-plugin-ios-android --variable URL_SCHEME="your custom url scheme"
 ```
 ### Removing the Plugin from project
 ```sh
@@ -78,6 +78,11 @@ Spotify.setVolume(val1,val2);
 ```javascript
 Spotify.Events.onMetadataChanged = function(args){};
 ```
+>Called when metadata for current changed.
+ This event occurs when playback starts or changes to a different context,
+ when a track switch occurs, etc. This is an informational event that does
+ not require action, but should be used to keep the UI display updated with
+ the latest metadata information.
 > *args[0]* - current track;
 > *args[1]* - artist name;
 > *args[2]* - album name;
@@ -102,15 +107,11 @@ Spotify.Events.onNext = function(args){};
 Spotify.Events.onPause = function(args){};
 ```
 > *args[0]*  - action name;    
-
-```javascript
-Spotify.Events.onPlay = function(args){};
-```
-> *args[0]*  - action name; 
       
 ```javascript
 Spotify.Events.onAudioFlush = function(args){};
 ```
+> onAudioFlush playback to a given location in the current track.
 > *args[0]*  - position (ms); 
    
 ```javascript
