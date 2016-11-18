@@ -73,7 +73,7 @@ play:function(val){
                      [val]
                      )
     },
-    Events : {
+    events : {
         onPlayerPlay : function(args){},
         onMetadataChanged :function(args){},
         onPrev : function(args){
