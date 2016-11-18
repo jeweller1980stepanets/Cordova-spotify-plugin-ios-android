@@ -112,6 +112,7 @@ Spotify.Events.onPause = function(args){};
 Spotify.Events.onAudioFlush = function(args){};
 ```
 > onAudioFlush playback to a given location in the current track.
+> As a fact, return current position progress of a track.
 > *args[0]*  - position (ms); 
    
 ```javascript
