@@ -21,12 +21,11 @@ cordova plugin rm cordova.plugin.spotify
 > - iOS
 
 ### Platform specific
-:warning: for Android platform not implemented method `setVolume()` and `event onVolumeChanged()`
+:warning:***for Android*** platform not implemented method `setVolume()` and `event onVolumeChanged()`
 It will be fixed when this methods will be in Spotify SDK
 
 
-**for iOS**
-You must download *spotify_token_swap.rb*. You may download it [here] [PlGh].
+:warning:***for iOS***You must download *spotify_token_swap.rb*. You may download it [here] [PlGh].
 To run the service, enter your client ID, client secret and client callback URL and run the project.
 
 # Using the plugin
