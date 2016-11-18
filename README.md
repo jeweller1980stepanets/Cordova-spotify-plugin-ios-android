@@ -1,3 +1,5 @@
+[![N|Solid](http://procoders.tech/art/powered.png)](http://procoders.tech/)
+
 # Cordova Spotify Plugin
 This plugin included all main functions of audio player for Spotify servise :smirk:
 
@@ -27,7 +29,7 @@ It will be fixed when this methods will be in Spotify SDK
 
 After device is ready you must defined the main variable:
 ```javascript
-var Spotify =window.cordova.plugins.SpotifyPlugin;
+var Spotify = window.cordova.plugins.SpotifyPlugin;
 ```
 :thumbsup: *After this you may use all method in your code.*
 
