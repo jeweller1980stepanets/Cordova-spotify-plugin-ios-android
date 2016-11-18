@@ -17,9 +17,11 @@ cordova plugin rm cordova.plugin.spotify
 ## Supported Platforms
 > - Android
 > - iOS
+
 ### Platform specific
 :warning: for Android platform not implemented method `setVolume()` and `event onVolumeChanged()`
 It will be fixed when this methods will be in Spotify SDK
+
 # Using the plugin
 > **You must have premium account from Deezer servise for playing music** :exclamation:
 
