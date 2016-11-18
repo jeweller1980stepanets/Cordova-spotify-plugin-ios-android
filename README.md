@@ -33,7 +33,7 @@ To run the service, enter your client ID, client secret and client callback URL 
 
 After device is ready you must defined the main variable:
 ```javascript
-var Spotify = window.cordova.plugins.SpotifyPlugin;
+var spotifyCordova = window.cordova.plugins.SpotifyPlugin;
 ```
 :thumbsup: *After this you may use all method in your code.*
 
@@ -41,42 +41,42 @@ var Spotify = window.cordova.plugins.SpotifyPlugin;
 All methods returning promises, but you can also use standard callback functions.
 
 ```javascript
-Spotify.login(appId, redirectURL);
+spotifyCordova.login(appId, redirectURL);
 ```
 > - *appId* - your application id in Spotify
 > - *redirectURL* - White-listed addresses to redirect to after authentication success OR failure 
 
 ```javascript
-Spotify.play(value);
+spotifyCordova.play(value);
 ```
 > - *value* - track id or album id or playlist id
 
-**Exemple:**
-> Spotify.play("spotify:track:3qRNQHagYiiDLdWMSOkPGG");
-> Spotify.play("spotify:album:75Sgdm3seM5KXkEd46vaDb");
-> Spotify.play("spotify:user:spotify:playlist:2yLXxKhhziG2xzy7eyD4TD");
+**Example:**
+> spotifyCordova.play("spotify:track:3qRNQHagYiiDLdWMSOkPGG");
+> spotifyCordova.play("spotify:album:75Sgdm3seM5KXkEd46vaDb");
+> spotifyCordova.play("spotify:user:spotify:playlist:2yLXxKhhziG2xzy7eyD4TD");
 
 
 ```javascript
-Spotify.pause();
-Spotify.next();
-Spotify.prev();
-Spotify.logout();
+spotifyCordova.pause();
+spotifyCordova.next();
+spotifyCordova.prev();
+spotifyCordova.logout();
 ```
 ```javascript
-Spotify.seek(position);
+spotifyCordova.seek(position);
 ```
 > *position* - value between 0...100 %
 
 ```javascript
-Spotify.setVolume(val1,val2);
+spotifyCordova.setVolume(val1,val2);
 ```
 > *val1,val2* - the volume for the left and right channel (between 0...100%)
 
 
 ## Events
 ```javascript
-Spotify.Events.onMetadataChanged = function(args){};
+spotifyCordova.Events.onMetadataChanged = function(args){};
 ```
 >Called when metadata for current changed.
  This event occurs when playback starts or changes to a different context,
@@ -89,7 +89,7 @@ Spotify.Events.onMetadataChanged = function(args){};
 > *args[3]* - track duration.
 
 ```javascript
-Spotify.Events.onPlayerPlay = function(arg){};
+spotifyCordova.Events.onPlayerPlay = function(arg){};
 ```
 > *arg* - name of event (string)
 
@@ -99,34 +99,34 @@ Spotify.Events.onPrev = function(args){};
 > *args[0]*  - action name;
 
 ```javascript
-Spotify.Events.onNext = function(args){};
+spotifyCordova.Events.onNext = function(args){};
 ```
 > *args[0]*  - action name;        
      
 ```javascript
-Spotify.Events.onPause = function(args){};
+spotifyCordova.Events.onPause = function(args){};
 ```
 > *args[0]*  - action name;    
       
 ```javascript
-Spotify.Events.onAudioFlush = function(args){};
+spotifyCordova.Events.onAudioFlush = function(args){};
 ```
 > onAudioFlush playback to a given location in the current track.
 > As a fact, return current position progress of a track.
 > *args[0]*  - position (ms); 
    
 ```javascript
-Spotify.Events.onTrackChanged = function(args){};
+spotifyCordova.Events.onTrackChanged = function(args){};
 ```
 > *args[0]*  - action name;      
   
 ```javascript
-Spotify.Events.onPosition = function(args){};
+spotifyCordova.Events.onPosition = function(args){};
 ```
 > *args[0]*  - position (ms);      
       
 ```javascript
-Spotify.Events.onVolumeChanged = function(args){};
+spotifyCordova.Events.onVolumeChanged = function(args){};
 ```
 > *args[0]*  - volume betwen 0.0 ....1.0
     
