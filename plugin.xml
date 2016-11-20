@@ -11,13 +11,14 @@
         <config-file parent="/*" target="res/xml/config.xml">
         <feature name="SpotifyPlugin"><param name="android-package" value="cordova.plugin.spotify.SpotifyPlugin" />
         </feature>
+        </config-file>
         <intent-filter>
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
             <category android:name="android.intent.category.BROWSABLE" />
             <data android:scheme="$URL_SCHEME"/>
         </intent-filter>
-    </config-file>
+    
     <config-file parent="/*" target="AndroidManifest.xml" />
         <source-file src="libs/spotify-auth-beta23-noconnect-2.20b.aar" target-dir="libs/" />
         <source-file src="libs/spotify-player-beta23-noconnect-2.20b.aar" target-dir="libs/" />
