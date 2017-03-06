@@ -73,6 +73,16 @@ play:function(val){
                      [val]
                      )
     },
+     getToken : function(success,error){
+               exec(
+                   success,// function(res){alert(res);},//res - TOKEN
+                    error,//function(){console.log("error");},
+                    "SpotifyPlugin",
+                    "getToken",
+                    []
+                    )
+               },
+
     Events : {
         onPlayerPlay : function(args){},
         onMetadataChanged :function(args){},

@@ -108,6 +108,14 @@
     }
     
 }
+-(void)getToken:(CDVInvokedUrlCommand*)command
+{
+    CDVPluginResult *pluginResult;
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[[SPTAuth defaultInstance] session] accessToken]];
+    
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    
+}
 -(void)play:(CDVInvokedUrlCommand*)command
 {
     NSString * str1 = [command.arguments objectAtIndex:0];

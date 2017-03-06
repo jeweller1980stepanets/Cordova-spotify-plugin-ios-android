@@ -23,6 +23,7 @@ NSDate *stringToDate(NSString *dateString);
 -(void)logout:(CDVInvokedUrlCommand*)command;
 -(void)seek:(CDVInvokedUrlCommand*)command;
 -(void)volume:(CDVInvokedUrlCommand*)command;
+-(void)getToken:(CDVInvokedUrlCommand*)command;
 -(void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didChangeToTrack:(NSDictionary *)trackMetadata;
 -(void)audioStreamingDidSkipToNextTrack:(SPTAudioStreamingController *)audioStreaming;
 -(void)audioStreamingDidSkipToPreviousTrack:(SPTAudioStreamingController *)audioStreaming;

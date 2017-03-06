@@ -183,12 +183,17 @@ Player.NotificationCallback, ConnectionStateCallback{
         }else if(ACTION_GET_POSITON.equalsIgnoreCase(action)){
             this.getPosition();
             success = true;
+        }else if(ACTION_GET_TOKEN.equalsIgnoreCase(action)){
+        this.getToken(callbackContext);
+        success = true;
         }
-        
-        
+    
         return success;
     }
-    
+    private void getToken(CallbackContext callbackContext){
+        callbackContext.success( this.currentAccessToken);
+        Log.d(TAG,"getToken(hueta)"+callbackContext);
+    }
     private void setVolume(int value) {
         Log.d(TAG, "Volume = " + value);
         cordova.getActivity().setVolumeControlStream(value);//TODO: volume
