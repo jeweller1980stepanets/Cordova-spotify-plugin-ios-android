@@ -109,7 +109,10 @@ play:function(val){
         },
         onVolumeChanged : function(arg){
             //arg - volume betwen 0.0 ....1.0
-        }
+        },
+         onLogedIn :function(arg){
+               alert(arg);
+               }
         
     }
     
