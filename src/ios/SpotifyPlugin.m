@@ -62,6 +62,24 @@
                                 resultWithStatus:CDVCommandStatus_OK
                                 ];
                 auth.session = session;
+                SPTAuth *auth = [SPTAuth defaultInstance];
+                if (self.player == nil) {
+                    NSError *error = nil;
+                    self.player = [SPTAudioStreamingController sharedInstance];
+                    if ([self.player startWithClientId:auth.clientID audioController:nil allowCaching:YES error:&error]) {
+                        self.player.delegate = self;
+                        self.player.playbackDelegate = self;
+                        self.player.diskCache = [[SPTDiskCache alloc] initWithCapacity:1024 * 1024 * 64];
+                        [self.player loginWithAccessToken:auth.session.accessToken];
+                        NSLog(@"SpotifyPlugin player init");
+                        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onLogedIn(['hueta'])"];
+                    } else {
+                        self.player = nil;
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error init" message:[error description] preferredStyle:UIAlertControllerStyleAlert];
+                        [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+                        
+                    }
+                }
             }
             
             [weakSelf.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
