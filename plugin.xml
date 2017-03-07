@@ -29,7 +29,8 @@
     
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
-            <feature name="SpotifyPlugin"><param name="ios-package" value="SpotifyPlugin" />
+            <feature name="SpotifyPlugin">
+                <param name="ios-package" value="SpotifyPlugin" onload="true" />
             </feature>
         </config-file>
         
