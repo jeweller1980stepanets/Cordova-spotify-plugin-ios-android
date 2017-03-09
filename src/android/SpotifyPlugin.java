@@ -405,6 +405,9 @@ currentPlayer.login(response.getAccessToken());
 @Override
 public void onLoggedIn() {
 Log.d("MainActivity", "User logged in");
+JSONArray array = new JSONArray();
+array.put("hueta");
+sendUpdate("onLogedIn", new Object[]{array});
 }
 
 @Override
