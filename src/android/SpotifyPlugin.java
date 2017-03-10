@@ -51,7 +51,7 @@ Player.NotificationCallback, ConnectionStateCallback{
     private static final String ACTION_VOLUME = "setVolume";
     private static final String METHOD_SEND_TO_JS_OBJ = "window.cordova.plugins.SpotifyPlugin.Events.";
     private static final String ACTION_GET_POSITON = "getPosition";
-    
+    private static final String ACTION_GET_TOKEN = "getToken";
     private static final int REQUEST_CODE = 1337;
     
     private String clientId;// ="4eb7b5c08bee4d759d34dbc1823fd7c5";
