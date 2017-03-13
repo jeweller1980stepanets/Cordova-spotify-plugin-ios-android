@@ -1,13 +1,13 @@
 var exec = require('cordova/exec');
                
 module.exports = {
-    login : function(a,b) {
+    login : function(a,b,mode) {
         exec(
                      function() {},
                      function() {},
                      "SpotifyPlugin",
                      "login",
-                     [a,b]
+                     [a,b,mode]
                      )
     },
 play:function(val){

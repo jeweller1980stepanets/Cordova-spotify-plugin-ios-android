@@ -39,12 +39,14 @@
     auth.clientID =[command.arguments objectAtIndex:0];
     auth.requestedScopes = @[SPTAuthStreamingScope];
     auth.redirectURL = [NSURL URLWithString:[command.arguments objectAtIndex:1]];
+    if([[command.arguments objectAtIndex:2]  isEqual:@"debug"]){
 #ifdef kTokenSwapServiceURL
     auth.tokenSwapURL = [NSURL URLWithString:@kTokenSwapServiceURL];
 #endif
 #ifdef kTokenRefreshServiceURL
     auth.tokenRefreshURL = [NSURL URLWithString:@kTokenRefreshServiceURL];
 #endif
+    }
     auth.sessionUserDefaultsKey = @kSessionUserDefaultsKey;
     NSString *responseType = @"token";
     
