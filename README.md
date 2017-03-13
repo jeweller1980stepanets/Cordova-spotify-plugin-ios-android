@@ -37,11 +37,11 @@ var Spotify = window.cordova.plugins.SpotifyPlugin;
 All methods returning promises, but you can also use standard callback functions.
 
 ```javascript
-Spotify.login(appId, redirectURL);
+Spotify.login(appId, redirectURL, mode);
 ```
 > - *appId* - your application id in Spotify
 > - *redirectURL* - White-listed addresses to redirect to after authentication success OR failure 
-
+> - *mode* - The mode of debugging, if you use Xcode emulator its value should be "debug" else empty string
 ```javascript
 Spotify.play(value);
 ```
