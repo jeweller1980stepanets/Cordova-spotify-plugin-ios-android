@@ -18,7 +18,14 @@
             <category android:name="android.intent.category.BROWSABLE" />
             <data android:scheme="$URL_SCHEME"/>
         </intent-filter>
-    
+        <config-file target="./res/values/strings.xml" parent="/resources">
+            <string name="redirect_uri">$URL_SCHEME</string>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.spotify.sdk.android.authentication.LoginActivity"
+            android:label="@string/app_name" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        </config-file>
     <config-file parent="/*" target="AndroidManifest.xml" />
         <source-file src="libs/spotify-auth-beta23-noconnect-2.20b.aar" target-dir="libs/" />
         <source-file src="libs/spotify-player-beta23-noconnect-2.20b.aar" target-dir="libs/" />
