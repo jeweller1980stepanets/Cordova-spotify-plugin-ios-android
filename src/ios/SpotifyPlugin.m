@@ -59,6 +59,7 @@
             
             if (error != nil) {
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:error.localizedDescription];
+            [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onDidNotLogin(['Did not login'])"];
             } else {
                 pluginResult = [CDVPluginResult
                                 resultWithStatus:CDVCommandStatus_OK

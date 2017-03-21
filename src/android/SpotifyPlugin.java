@@ -350,6 +350,9 @@ break;
 case ERROR :
 Log.e(TAG, response.getError());
 loginCallback.error(response.getError());
+JSONArray array = new JSONArray();
+    array.put("did not login");
+    sendUpdate("onDidNotLogin", new Object[]{array});
 break;
 }
 }
