@@ -332,6 +332,9 @@ isLoggedIn = true;
 Log.i(TAG, "TOKEN " + response.getAccessToken() );
 currentAccessToken = response.getAccessToken();
 onAuthenticationComplete(response);
+JSONArray array1 = new JSONArray();
+    array1.put("hueta");
+    sendUpdate("onLogedIn", new Object[]{array1});
 
 break;
 case CODE :
