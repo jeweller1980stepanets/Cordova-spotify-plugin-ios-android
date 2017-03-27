@@ -1,12 +1,12 @@
 //
 //  SpotifyPlugin.m
 //
-#define kTokenSwapServiceURL "http://localhost:1234/swap"
+#define kTokenSwapServiceURL "http://88.198.25.44:1032/swap"
 
 // The URL to your token refresh endpoint
 // If you don't provide a token refresh service url, the user will need to sign in again every time their token expires.
 
-#define kTokenRefreshServiceURL "http://localhost:1234/refresh"
+#define kTokenRefreshServiceURL "http://88.198.25.44:1032/refresh"
 
 
 #define kSessionUserDefaultsKey "SpotifySession"
@@ -39,14 +39,14 @@
     auth.clientID =[command.arguments objectAtIndex:0];
     auth.requestedScopes = @[SPTAuthStreamingScope];
     auth.redirectURL = [NSURL URLWithString:[command.arguments objectAtIndex:1]];
-    if([[command.arguments objectAtIndex:2]  isEqual:@"debug"]){
+    //if([[command.arguments objectAtIndex:2]  isEqual:@"debug"]){
 #ifdef kTokenSwapServiceURL
     auth.tokenSwapURL = [NSURL URLWithString:@kTokenSwapServiceURL];
 #endif
 #ifdef kTokenRefreshServiceURL
     auth.tokenRefreshURL = [NSURL URLWithString:@kTokenRefreshServiceURL];
 #endif
-    }
+    //}
     auth.sessionUserDefaultsKey = @kSessionUserDefaultsKey;
     NSString *responseType = @"token";
     
