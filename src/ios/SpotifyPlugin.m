@@ -115,7 +115,10 @@
 -(void)getToken:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult *pluginResult;
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[[SPTAuth defaultInstance] session] accessToken]];
+    NSMutableArray *arr = [NSMutableArray array];
+    [arr addObject:[[[SPTAuth defaultInstance] session] accessToken]];
+    [arr addObject:[[[SPTAuth defaultInstance] session] encryptedRefreshToken]];
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsArray:arr];
     
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     
