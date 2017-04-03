@@ -52,10 +52,6 @@
                     <array>
                         <string>$URL_SCHEME_LT</string>
                     </array>
-                    <key>LSApplicationQueriesSchemes</key>
-                    <array>
-                        <string>spotify-auth</string>
-                    </array>
                 </dict>
             </array>
         </config-file>
