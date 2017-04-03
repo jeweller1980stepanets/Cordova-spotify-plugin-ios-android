@@ -58,6 +58,7 @@
         <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
             <array>
                 <string>spotify-action</string>
+                <string>spotify</string>
             </array>
         </config-file>
         <header-file src="src/ios/SpotifyPlugin.h" />
