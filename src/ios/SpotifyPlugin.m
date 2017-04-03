@@ -107,7 +107,11 @@
                     }
                     ];
         
-        [[UIApplication sharedApplication] openURL:auth.spotifyWebAuthenticationURL];
+        if ([SPTAuth supportsApplicationAuthentication]){
+            [[UIApplication sharedApplication] openURL:auth.spotifyAppAuthenticationURL];
+        }else{
+            [[UIApplication sharedApplication] openURL:auth.spotifyWebAuthenticationURL];
+        }
     }];
 
    

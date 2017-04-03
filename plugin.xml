@@ -12,12 +12,12 @@
         <feature name="SpotifyPlugin"><param name="android-package" value="cordova.plugin.spotify.SpotifyPlugin" />
         </feature>
         </config-file>
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="$URL_SCHEME_LT"/>
-        </intent-filter>
+<!--        <intent-filter>-->
+<!--            <action android:name="android.intent.action.VIEW" />-->
+<!--            <category android:name="android.intent.category.DEFAULT" />-->
+<!--            <category android:name="android.intent.category.BROWSABLE" />-->
+<!--            <data android:scheme="$URL_SCHEME_LT"/>-->
+<!--        </intent-filter>-->
         <config-file target="./res/values/strings.xml" parent="/resources">
             <string name="redirect_uri">$URL_SCHEME_LT</string>
         </config-file>
