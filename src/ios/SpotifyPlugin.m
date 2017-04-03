@@ -1,12 +1,12 @@
 //
 //  SpotifyPlugin.m
 //
-#define kTokenSwapServiceURL "http://88.198.25.44:1032/swap"
+#define kTokenSwapServiceURL "http://5.9.24.144:1039/swap"
 
 // The URL to your token refresh endpoint
 // If you don't provide a token refresh service url, the user will need to sign in again every time their token expires.
 
-#define kTokenRefreshServiceURL "http://88.198.25.44:1032/refresh"
+#define kTokenRefreshServiceURL "http://5.9.24.144:1039/refresh"
 
 
 #define kSessionUserDefaultsKey "SpotifySession"
