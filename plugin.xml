@@ -55,7 +55,11 @@
                 </dict>
             </array>
         </config-file>
-        
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>spotify-action</string>
+            </array>
+        </config-file>
         <header-file src="src/ios/SpotifyPlugin.h" />
         <source-file src="src/ios/SpotifyPlugin.m" />
         
