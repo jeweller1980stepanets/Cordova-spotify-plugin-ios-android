@@ -357,6 +357,10 @@ JSONArray array = new JSONArray();
     array.put("did not login");
     sendUpdate("onDidNotLogin", new Object[]{array});
 break;
+default:JSONArray array3 = new JSONArray();
+array3.put("did not login");
+sendUpdate("onDidNotLogin", new Object[]{array3});
+break;
 }
 }
 
