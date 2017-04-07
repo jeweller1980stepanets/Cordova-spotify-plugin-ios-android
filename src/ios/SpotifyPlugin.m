@@ -37,7 +37,8 @@
     // NSLog(@"SpotifyPlugin - %@ - %@",[command.arguments objectAtIndex:0],[command.arguments objectAtIndex:1]);
     SPTAuth *auth = [SPTAuth defaultInstance];
     auth.clientID =[command.arguments objectAtIndex:0];
-    auth.requestedScopes = @[SPTAuthStreamingScope];
+    NSArray *arr = [NSArray arrayWithObjects:SPTAuthStreamingScope,SPTAuthUserFollowModifyScope,SPTAuthUserLibraryReadScope,SPTAuthUserFollowReadScope,SPTAuthUserReadPrivateScope,SPTAuthUserReadEmailScope,SPTAuthUserReadTopScope, nil];
+    auth.requestedScopes = arr;//@[SPTAuthStreamingScope];
     auth.redirectURL = [NSURL URLWithString:[command.arguments objectAtIndex:1]];
     //if([[command.arguments objectAtIndex:2]  isEqual:@"debug"]){
 #ifdef kTokenSwapServiceURL
