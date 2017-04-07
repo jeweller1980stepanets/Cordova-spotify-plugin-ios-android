@@ -241,7 +241,7 @@ Log.d(TAG,"ERROR:" + error);
 private void login(String val) {
 clientId = val;
 final AuthenticationRequest request = new AuthenticationRequest.Builder(clientId, AuthenticationResponse.Type.TOKEN, redirectUri)
-.setScopes(new String[]{"user-read-private", "playlist-read", "playlist-read-private", "streaming"})
+.setScopes(new String[]{"user-read-private", "playlist-read", "playlist-read-private","user-read-email", "streaming"})
 .build();
 AuthenticationClient.openLoginActivity(cordova.getActivity(), REQUEST_CODE, request);
 }
