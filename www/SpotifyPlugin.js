@@ -1,13 +1,15 @@
 var exec = require('cordova/exec');
                
 module.exports = {
-    login : function(a,b,mode) {
+    login : function(a,b,url) {
+        let swap = url+'/swap';
+        let refresh = url+ '/refresh';
         exec(
                      function() {},
                      function() {},
                      "SpotifyPlugin",
                      "login",
-                     [a,b,mode]
+                     [a,b,swap,refresh]
                      )
     },
 play:function(val){
