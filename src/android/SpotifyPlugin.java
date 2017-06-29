@@ -192,7 +192,7 @@ Player.NotificationCallback, ConnectionStateCallback{
     }
     private void getToken(CallbackContext callbackContext){
         callbackContext.success( this.currentAccessToken);
-        Log.d(TAG,"getToken(hueta)"+callbackContext);
+        Log.d(TAG,"getToken()"+callbackContext);
     }
     private void setVolume(int value) {
         Log.d(TAG, "Volume = " + value);
@@ -333,7 +333,7 @@ Log.i(TAG, "TOKEN " + response.getAccessToken() );
 currentAccessToken = response.getAccessToken();
 onAuthenticationComplete(response);
 JSONArray array1 = new JSONArray();
-    array1.put("hueta");
+    array1.put("logged in");
     sendUpdate("onLogedIn", new Object[]{array1});
 
 break;
@@ -416,7 +416,7 @@ currentPlayer.login(response.getAccessToken());
 public void onLoggedIn() {
 Log.d("MainActivity", "User logged in");
 JSONArray array = new JSONArray();
-array.put("hueta");
+array.put("logged in");
 sendUpdate("onLogedIn", new Object[]{array});
 }
 

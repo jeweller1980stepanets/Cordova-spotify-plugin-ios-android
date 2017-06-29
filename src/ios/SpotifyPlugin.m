@@ -72,7 +72,7 @@
                         self.player.diskCache = [[SPTDiskCache alloc] initWithCapacity:1024 * 1024 * 64];
                         [self.player loginWithAccessToken:auth.session.accessToken];
                         NSLog(@"SpotifyPlugin player init");
-                        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onLogedIn(['hueta'])"];
+                        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onLogedIn(['logged in'])"];
                     } else {
                         self.player = nil;
                         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error init" message:[error description] preferredStyle:UIAlertControllerStyleAlert];

@@ -8,16 +8,14 @@
     <preference name="URL_SCHEME_LT" />
 
     <platform name="android">
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        </config-file>
         <config-file parent="/*" target="res/xml/config.xml">
         <feature name="SpotifyPlugin"><param name="android-package" value="cordova.plugin.spotify.SpotifyPlugin" />
         </feature>
         </config-file>
-<!--        <intent-filter>-->
-<!--            <action android:name="android.intent.action.VIEW" />-->
-<!--            <category android:name="android.intent.category.DEFAULT" />-->
-<!--            <category android:name="android.intent.category.BROWSABLE" />-->
-<!--            <data android:scheme="$URL_SCHEME_LT"/>-->
-<!--        </intent-filter>-->
+
         <config-file target="./res/values/strings.xml" parent="/resources">
             <string name="redirect_uri">$URL_SCHEME_LT</string>
         </config-file>
@@ -25,8 +23,10 @@
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <activity android:name="com.spotify.sdk.android.authentication.LoginActivity"
             android:label="@string/app_name" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
         </config-file>
     <config-file parent="/*" target="AndroidManifest.xml" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
         <source-file src="libs/spotify-auth-beta23-noconnect-2.20b.aar" target-dir="libs/" />
         <source-file src="libs/spotify-player-beta23-noconnect-2.20b.aar" target-dir="libs/" />
         <source-file src="src/android/SpotifyPlugin.java" target-dir="src/cordova/plugin/spotify/" />
