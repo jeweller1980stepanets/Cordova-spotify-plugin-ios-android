@@ -113,6 +113,28 @@
 
    
 }
+-(void)auth:(CDVInvokedUrlCommand*)command{
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    if (self.player == nil) {
+        NSError *error = nil;
+        self.player = [SPTAudioStreamingController sharedInstance];
+        if ([self.player startWithClientId:auth.clientID audioController:nil allowCaching:YES error:&error]) {
+            self.player.delegate = self;
+            self.player.playbackDelegate = self;
+            self.player.diskCache = [[SPTDiskCache alloc] initWithCapacity:1024 * 1024 * 64];
+            [self.player loginWithAccessToken:[command.arguments objectAtIndex:0]];
+            NSLog(@"SpotifyPlugin player init");
+            [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onLogedIn(['logged in'])"];
+        } else {
+            self.player = nil;
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error init" message:[error description] preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+            
+        }
+    }
+}
+
+
 -(void)getToken:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult *pluginResult;

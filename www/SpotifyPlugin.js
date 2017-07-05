@@ -12,15 +12,24 @@ module.exports = {
                      [a,b,swap,refresh]
                      )
     },
-play:function(val){
-    exec(
-                 function() {},
-                 function() {},
-                 "SpotifyPlugin",
-                 "play",
-                 [val]
-                 )
-},
+     auth : function(token,id){
+                   exec(
+                        function() {},
+                        function() {},
+                        "SpotifyPlugin",
+                        "auth",
+                        [token,id]
+                        )
+                   },
+    play:function(val){
+        exec(
+                     function() {},
+                     function() {},
+                     "SpotifyPlugin",
+                     "play",
+                     [val]
+                     )
+    },
     pause : function(){
         exec(
                      function(){},

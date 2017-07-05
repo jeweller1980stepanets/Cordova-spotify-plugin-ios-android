@@ -37,7 +37,9 @@ import com.spotify.sdk.android.player.SpotifyPlayer;
 public class SpotifyPlugin extends CordovaPlugin implements
 Player.NotificationCallback, ConnectionStateCallback{
     private static final String TAG = "CordovaSpotifyPlugin";
-    
+
+    private static final String ACTION_AUTH = "auth";
+
     private static final String ACTION_LOGIN = "login";
     private static final String ACTION_PLAY = "play";
     private static final String ACTION_PAUSE = "pause";
@@ -126,7 +128,18 @@ Player.NotificationCallback, ConnectionStateCallback{
             
             this.play(uri);
             success = true;
-        } else if(ACTION_PAUSE.equalsIgnoreCase(action)) {
+        }else if(ACTION_AUTH.equalsIgnoreCase(action)){
+            String token = "";
+            String id = "";
+            try {
+                token = data.getString(0);
+                id = data.getString(1);
+            }catch (JSONException e){
+                Log.e(TAG, e.toString());
+            }
+            this.auth(token,id);
+        }
+        else if(ACTION_PAUSE.equalsIgnoreCase(action)) {
             this.pause();
             success = true;
         } else if(ACTION_RESUME.equalsIgnoreCase(action)) {
@@ -190,6 +203,39 @@ Player.NotificationCallback, ConnectionStateCallback{
     
         return success;
     }
+    private void auth(String token, String id){
+        Log.d(TAG,"auth()");
+        if (currentPlayer == null) {
+
+            Config playerConfig = new Config(cordova.getActivity(), token, id);
+// Since the Player is a static singleton owned by the Spotify class, we pass "this" as
+// the second argument in order to refcount it properly. Note that the method
+// Spotify.destroyPlayer() also takes an Object argument, which must be the same as the
+// one passed in here. If you pass different instances to Spotify.getPlayer() and
+// Spotify.destroyPlayer(), that will definitely result in resource leaks.
+            currentPlayer = Spotify.getPlayer(playerConfig, this, new SpotifyPlayer.InitializationObserver() {
+
+                @Override
+                public void onInitialized(SpotifyPlayer player) {
+                    Log.d(TAG,"-- Player initialized --");
+                    currentPlayer.setConnectivityStatus(mOperationCallback, getNetworkConnectivity(cordova.getActivity().getApplicationContext()));
+                    currentPlayer.addNotificationCallback(SpotifyPlugin.this);
+                    currentPlayer.addConnectionStateCallback(SpotifyPlugin.this);
+// Trigger UI refresh
+                }
+
+                @Override
+                public void onError(Throwable error) {
+                    Log.d(TAG,"Error in initialization: " + error.getMessage());
+                }
+            });
+
+
+        } else {
+            currentPlayer.login(token);
+        }
+    }
+
     private void getToken(CallbackContext callbackContext){
         callbackContext.success( this.currentAccessToken);
         Log.d(TAG,"getToken()"+callbackContext);
@@ -285,7 +331,7 @@ currentPlayer.skipToPrevious(mOperationCallback);
 }
 private void play(String uri) {
 Log.i(TAG, "Play: Is logged in -" + isLoggedIn + "Current Access" + currentAccessToken + "Current player" + currentPlayer);
-if(clientId == null || isLoggedIn == false || currentAccessToken == null || currentPlayer == null) return;
+//if(clientId == null || isLoggedIn == false || currentAccessToken == null || currentPlayer == null) return;
 
 if(!currentPlayer.isLoggedIn()) {
 Log.e(TAG, "Current Player is initialized but player is not logged in, set access token manually or call login with fetchTokenManually : false");

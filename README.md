@@ -4,7 +4,7 @@
 This plugin included all main functions of audio player for Spotify servise :smirk:
 
 ## Installation
-> To communicate with Spotify you need to register your application’s bundle id section in the [Developer Portal][PlDb]. This value is used to authenticate your application against Spotify client.
+> To communicate with Spotify you need to register your application’s bundle id section in the [Developer Portal](http://developers.deezer.com/sdk/ios). This value is used to authenticate your application against Spotify client.
 
 
 
@@ -42,6 +42,14 @@ Spotify.login(appId, redirectURL, mode);
 > - *appId* - your application id in Spotify
 > - *redirectURL* - White-listed addresses to redirect to after authentication success OR failure 
 > - *mode* - The mode of debugging, if you use Xcode emulator its value should be "debug" else empty string
+
+
+```javascript
+Spotify.auth(token,clientId);
+```
+> - token - spotify access token;
+> - clientId - your application id in Spotify.
+
 ```javascript
 Spotify.play(value);
 ```
@@ -126,6 +134,6 @@ Spotify.Events.onVolumeChanged = function(args){};
     
 ### Authors
  - Aleksey Stepanets
-[PlDb]:<http://developers.deezer.com/sdk/ios>
+
 
 [![N|Solid](http://procoders.tech/art/powered.png)](http://procoders.tech/)

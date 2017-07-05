@@ -16,6 +16,7 @@ NSDate *stringToDate(NSString *dateString);
 -(void)myPluginMethod:(CDVInvokedUrlCommand*)command;
 -(id)init;
 -(void)login :(CDVInvokedUrlCommand*)command;
+-(void)auth : (CDVInvokedUrlCommand*)command;
 -(void)play:(CDVInvokedUrlCommand*)command;
 -(void)pause:(CDVInvokedUrlCommand*)command;
 -(void)next:(CDVInvokedUrlCommand*)command;
