@@ -227,6 +227,9 @@ Player.NotificationCallback, ConnectionStateCallback{
                 @Override
                 public void onError(Throwable error) {
                     Log.d(TAG,"Error in initialization: " + error.getMessage());
+                    JSONArray array = new JSONArray();
+                    array.put("invalid access token");
+                    sendUpdate("onPlayError", new Object[]{array});
                 }
             });
 
@@ -280,6 +283,9 @@ Player.NotificationCallback, ConnectionStateCallback{
 @Override
 public void onError(Error error) {
 Log.d(TAG,"ERROR:" + error);
+    JSONArray array = new JSONArray();
+    array.put(error);
+    sendUpdate("onPlayError", new Object[]{array});
 }
 };
 
@@ -330,9 +336,12 @@ currentPlayer.skipToPrevious(mOperationCallback);
 
 }
 private void play(String uri) {
-Log.i(TAG, "Play: Is logged in -" + isLoggedIn + "Current Access" + currentAccessToken + "Current player" + currentPlayer);
-//if(clientId == null || isLoggedIn == false || currentAccessToken == null || currentPlayer == null) return;
-
+if(currentPlayer == null) {
+    JSONArray array = new JSONArray();
+    array.put("player did not initialize");
+    sendUpdate("onPlayError", new Object[]{array});
+    return;
+}
 if(!currentPlayer.isLoggedIn()) {
 Log.e(TAG, "Current Player is initialized but player is not logged in, set access token manually or call login with fetchTokenManually : false");
 return;
@@ -448,6 +457,9 @@ currentPlayer.addConnectionStateCallback(SpotifyPlugin.this);
 @Override
 public void onError(Throwable error) {
 Log.d(TAG,"Error in initialization: " + error.getMessage());
+    JSONArray array = new JSONArray();
+    array.put(error);
+    sendUpdate("onPlayError", new Object[]{array});
 }
 });
 
@@ -602,7 +614,10 @@ Log.d(TAG, "player EVENT_TRACK_DELIVERED ");
 
 @Override
 public void onPlaybackError(Error error) {
-Log.d("MainActivity", "Playback error received: " + error.name());
+Log.d("MainActivity", "Playback error received: " + error.toString());
+    JSONArray array = new JSONArray();
+    array.put(error);
+    sendUpdate("onPlayError", new Object[]{array});
 }
 public void sendUpdate(final String action, final Object[] params) {
 String method = String.format("%s%s", METHOD_SEND_TO_JS_OBJ, action);
