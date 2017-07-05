@@ -126,6 +126,9 @@ module.exports = {
         },
         onDidNotLogin:function(arg){
             alert(arg);
+        },
+        onPlayError :function(error){
+            alert(error[0]);//error[0] - error message
         }
         
     }

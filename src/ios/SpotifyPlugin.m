@@ -148,12 +148,19 @@
 }
 -(void)play:(CDVInvokedUrlCommand*)command
 {
+    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.Events.onPlayError(['"];
+   
     NSString * str1 = [command.arguments objectAtIndex:0];
     NSLog(@"SpotifyPlayer track %@",str1);
-    
+    if(![self.player delegate]){
+        [str appendFormat:@"player not initialized'])"];
+          [self.commandDelegate evalJs:str];
+    }
     [self.player playSpotifyURI:str1 startingWithIndex:0 startingWithPosition:0 callback:^(NSError *error) {
         if (error != nil) {
             NSLog(@"*** failed to play: %@", error);
+            [str appendFormat:@"%@'])",error];
+            [self.commandDelegate evalJs:str];
             return;
         }
     }];
@@ -304,5 +311,11 @@
     
     [self.commandDelegate evalJs:str];
     
+}
+-(void)audioStreaming:(SPTAudioStreamingController *)audioStreaming didReceiveError:(NSError *)error{
+    NSLog(@"%@", error);
+    NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.Events.onPlayError(['"];
+    [str appendFormat:@"%@'])",error];
+    [self.commandDelegate evalJs:str];
 }
 @end

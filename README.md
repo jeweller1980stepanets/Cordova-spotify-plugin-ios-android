@@ -131,6 +131,11 @@ Spotify.Events.onPosition = function(args){};
 Spotify.Events.onVolumeChanged = function(args){};
 ```
 > *args[0]*  - volume betwen 0.0 ....1.0
+
+```javascript
+Spotify.Events.onPlayError = function(error){};
+```
+> *error[0]*  - error message
     
 ### Authors
  - Aleksey Stepanets
