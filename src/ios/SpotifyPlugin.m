@@ -18,6 +18,7 @@
 
 @interface SpotifyPlugin()<SPTAudioStreamingDelegate,SPTAudioStreamingPlaybackDelegate>
 @property (nonatomic, strong) SPTAudioStreamingController *player;
+@property (atomic, readwrite) BOOL firstLoad;
 @end;
 
 @implementation SpotifyPlugin
@@ -55,8 +56,14 @@
             CDVPluginResult *pluginResult;
             
             if (error != nil) {
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:error.localizedDescription];
-            [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onDidNotLogin(['Did not login'])"];
+                if(error.code==400 && self.firstLoad == YES){
+                        [self.player loginWithAccessToken:auth.session.accessToken];
+                         [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onLogedIn(['logged in'])"];
+                    }else{
+                        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:error.localizedDescription];
+                        [self.commandDelegate evalJs:@"window.cordova.plugins.SpotifyPlugin.Events.onDidNotLogin(['Did not login'])"];
+
+                    }
             } else {
                 pluginResult = [CDVPluginResult
                                 resultWithStatus:CDVCommandStatus_OK
@@ -185,12 +192,20 @@
 -(void)logout:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"SpotifyPlayer action logout");
-    if (self.player) {
+   if (self.player) {
         [self.player setIsPlaying:NO callback:nil];
         [self.player logout];
-        
-        SPTAuth *auth = [SPTAuth defaultInstance];
-        [[UIApplication sharedApplication] openURL:auth.spotifyWebAuthenticationURL];
+        //SPTAuth *auth =[SPTAuth defaultInstance];
+        // [[UIApplication sharedApplication] openURL:auth.spotifyWebAuthenticationURL];
+        NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (NSHTTPCookie *cookie in [storage cookies]) {
+            if ([cookie.domain rangeOfString:@"spotify."].length > 0 ||
+                [cookie.domain rangeOfString:@"facebook."].length > 0) {
+                [storage deleteCookie:cookie];
+            }
+        }
+        [[NSUserDefaults standardUserDefaults] synchronize];
+      
     }
 }
 -(void)seek:(CDVInvokedUrlCommand*)command
