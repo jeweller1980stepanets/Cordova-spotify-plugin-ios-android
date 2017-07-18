@@ -313,7 +313,7 @@ currentPlayer.pause(mOperationCallback);
 currentPlayer.logout();
 }
 
-this.login(clientId);
+//this.login(clientId);
 }
 
 public   void playAlbum(String id){
