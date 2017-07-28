@@ -1,0 +1,27 @@
+{
+  "name": "Cordova-spotify-plugin-ios-android",
+  "version": "0.1.0",
+  "description": "[![N|Solid](http://procoders.tech/art/powered.png)](http://procoders.tech/)",
+  "cordova": {
+    "id": "cordova.plugin.spotify",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeweller1980stepanets/Cordova-spotify-plugin-ios-android.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeweller1980stepanets/Cordova-spotify-plugin-ios-android/issues"
+  },
+  "homepage": "https://github.com/jeweller1980stepanets/Cordova-spotify-plugin-ios-android#readme"
+}
