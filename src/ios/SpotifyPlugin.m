@@ -235,6 +235,39 @@
     
     NSLog(@"SpotifyPlayer action seek %f ms",offset);
 }
+    -(void)seekTo:(CDVInvokedUrlCommand*)command
+    {
+        NSTimeInterval offset = ((NSNumber *)[command.arguments objectAtIndex:0]).doubleValue;
+        if(offset > 0 && offset < self.player.metadata.currentTrack.duration){
+        [self.commandDelegate runInBackground:^{
+            
+            
+            
+            [self.player seekTo:offset callback:^(NSError *error) {
+                CDVPluginResult *pluginResult;
+                
+                if (error != nil) {
+                    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: error.localizedDescription];
+                } else {
+                    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+                }
+                
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            }];
+        }];
+        NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.Events.onAudioFlush(["];
+        [str appendFormat:@"%f])",offset];
+        
+        [self.commandDelegate evalJs:str];
+        
+        NSLog(@"SpotifyPlayer action seek %f ms",offset);
+        } else {
+            NSString *error = @"incorrect duration";
+            NSMutableString *str = [NSMutableString stringWithString:@"window.cordova.plugins.SpotifyPlugin.Events.onPlayError(['"];
+            [str appendFormat:@"%@'])",error];
+            [self.commandDelegate evalJs:str];
+        }
+    }
 -(void)volume:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"SpotifyPlayer action volume%@", [command.arguments objectAtIndex:0]);
