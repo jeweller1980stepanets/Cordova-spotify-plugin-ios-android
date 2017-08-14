@@ -75,6 +75,15 @@ module.exports = {
                      [val]
                      )
     },
+    seekTo : function(val){
+        exec(
+                    function(){},
+                    function(){},
+                    "SpotifyPlugin",
+                    "seekTo",
+                    [val]
+                    )
+    },
     setVolume : function(val){
         exec(
                      function(){},

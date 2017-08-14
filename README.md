@@ -73,6 +73,11 @@ Spotify.seek(position);
 > *position* - value between 0...100 %
 
 ```javascript
+Spotify.seekTo(position);
+```
+> *position* - value in seconds
+
+```javascript
 Spotify.setVolume(val1,val2);
 ```
 > *val1,val2* - the volume for the left and right channel (between 0...100%)
