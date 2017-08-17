@@ -589,6 +589,9 @@ public class SpotifyPlugin extends CordovaPlugin implements
             Log.d(TAG, "player play");
             array.put("player play");
             sendUpdate("onPlay", new Object[]{array});
+            int x = (int) currentPlayer.getPlaybackState().positionMs;
+            Log.d(TAG, "position = " + x);
+            sendUpdate("onPosition", new Object[]{x});
 
         } else if (playerEvent.name().equals(EVENT_AUDIO_FLASH)) {
             Log.d(TAG, "player audio flush" + mCurrentPlaybackState.positionMs + "ms");
