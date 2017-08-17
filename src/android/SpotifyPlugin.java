@@ -388,8 +388,8 @@ public class SpotifyPlugin extends CordovaPlugin implements
 
 
     private void pause() {
-        if (clientId == null || isLoggedIn == false || currentAccessToken == null || currentPlayer == null)
-            return;
+        // if (clientId == null || isLoggedIn == false || currentAccessToken == null || currentPlayer == null)
+        //     return;
         if (currentPlayer.getPlaybackState().isPlaying) {
             currentPlayer.pause(mOperationCallback);
         } else {
